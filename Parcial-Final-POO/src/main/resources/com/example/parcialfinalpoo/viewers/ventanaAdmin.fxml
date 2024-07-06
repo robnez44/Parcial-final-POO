@@ -98,9 +98,7 @@
          </content>
     </TitledPane>
     <TitledPane text="untitled 3" />
-     <TitledPane   text="untitled" />
-    <TitledPane animated="false" text="untitled 3" />
-      <TitledPane animated="false" text="Consultar clientes por facilitador de tarjeta">
+      <TitledPane text="Consultar clientes por facilitador de tarjeta">
          <content>
             <VBox prefHeight="403.0" prefWidth="1064.0" spacing="10.0">
                <children>

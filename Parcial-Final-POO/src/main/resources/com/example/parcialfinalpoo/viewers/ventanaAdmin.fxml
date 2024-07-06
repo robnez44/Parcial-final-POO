@@ -97,10 +97,8 @@
             </VBox>
          </content>
     </TitledPane>
-<<<<<<< HEAD
     <TitledPane text="untitled 3" />
      <TitledPane   text="untitled" />
-=======
     <TitledPane animated="false" text="untitled 3" />
       <TitledPane animated="false" text="Consultar clientes por facilitador de tarjeta">
          <content>
@@ -158,6 +156,5 @@
                </children>
             </VBox>
          </content></TitledPane>
->>>>>>> 387ae6a5c2c41519ebf8f4c89aa5623f08aa80f9
   </panes>
 </Accordion>

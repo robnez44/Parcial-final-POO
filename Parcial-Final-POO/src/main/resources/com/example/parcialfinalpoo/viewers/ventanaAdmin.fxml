@@ -98,6 +98,6 @@
          </content>
     </TitledPane>
     <TitledPane text="untitled 3" />
-     <TitledPane text="untitled" />
+     <TitledPane   text="untitled" />
   </panes>
 </Accordion>

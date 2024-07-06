@@ -97,7 +97,67 @@
             </VBox>
          </content>
     </TitledPane>
+<<<<<<< HEAD
     <TitledPane text="untitled 3" />
      <TitledPane   text="untitled" />
+=======
+    <TitledPane animated="false" text="untitled 3" />
+      <TitledPane animated="false" text="Consultar clientes por facilitador de tarjeta">
+         <content>
+            <VBox prefHeight="403.0" prefWidth="1064.0" spacing="10.0">
+               <children>
+                  <Label text="Filtrar por facilitador de tarjeta">
+                     <font>
+                        <Font name="Ubuntu" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="421.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label text="Elige el facilitador">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox prefWidth="150.0" promptText="Facilitador" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </VBox>
+                  <Label text="Reporte creado correctamente">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="68.0" prefWidth="620.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Crear reporte">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Limpiar">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content></TitledPane>
+>>>>>>> 387ae6a5c2c41519ebf8f4c89aa5623f08aa80f9
   </panes>
 </Accordion>

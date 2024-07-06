@@ -13,8 +13,8 @@
 
 <Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="773.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcialfinalpoo.viewers.ventanaAdminApplication">
   <panes>
-    <TitledPane animated="false" text="untitled 1" />
-    <TitledPane animated="false" text="Consultar dinero gastado por cliente">
+    <TitledPane text="untitled 1" />
+    <TitledPane text="Consultar dinero gastado por cliente">
          <content>
             <VBox prefHeight="403.0" prefWidth="1064.0" spacing="10.0">
                <children>
@@ -97,7 +97,7 @@
             </VBox>
          </content>
     </TitledPane>
-    <TitledPane animated="false" text="untitled 3" />
-      <TitledPane animated="false" text="untitled" />
+    <TitledPane text="untitled 3" />
+     <TitledPane text="untitled" />
   </panes>
 </Accordion>

@@ -37,6 +37,12 @@ public class ventanaAdminController implements Initializable {
     private Label lblReporteB;
 
     @FXML
+    private ComboBox<String> cbFacilitador;
+
+    @FXML
+    private Label lblReporteD;
+
+    @FXML
     private Button btbCrearReporteB;
 
     // crear una lista observable para el ComboBox
@@ -45,10 +51,16 @@ public class ventanaAdminController implements Initializable {
             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     );
 
+    ObservableList<String> facilitadores = FXCollections.observableArrayList(
+            "Visa", "MasterCard", "American Express"
+    );
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cbMes.setItems(meses);
         cbMes.getSelectionModel().selectFirst(); // selecionar enero por defecto
+        cbFacilitador.setItems(facilitadores);
+        cbFacilitador.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -105,10 +117,76 @@ public class ventanaAdminController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    
+    @FXML
+    public void crearReporteD(){
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345");
+
+            String facilitador = cbFacilitador.getValue();
+
+            String query = "SELECT " +
+                    "c.id AS cliente_id, " +
+                    "c.nombre_completo, " +
+                    "tar.facilitador, " +
+                    "COUNT(t.id) AS cantidad_compras, " +
+                    "SUM(t.monto) AS total_gastado " +
+                    "FROM " +
+                    "Cliente c " +
+                    "JOIN " +
+                    "Tarjeta tar ON c.id = tar.cliente_id " +
+                    "JOIN " +
+                    "Transaccion t ON tar.id = t.tarjeta_id " +
+                    "WHERE " +
+                    "tar.facilitador = ? " +
+                    "GROUP BY " +
+                    "c.id, c.nombre_completo, tar.facilitador";
+
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, facilitador);
+            ResultSet rs = pstmt.executeQuery();
+
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String hora = now.format(formatter);
+
+            String nombreArchivo = "Reporte D - " + hora + " - " + LocalDate.now() + ".txt";
+            String rutaArchivo = "Reportes/" + nombreArchivo;
+            File file = new File(rutaArchivo);
+            Writer writer = new FileWriter(file);
+            writer.write("Reporte D\n\n" + "id_cliente\tnombre_completo\tfacilitador\tcantidad_compras\ttotal_gastado\n");
+
+            while (rs.next()) {
+                int clienteId = rs.getInt("cliente_id");
+                String nombreCompleto = rs.getString("nombre_completo");
+                String facilitadorConsulta = rs.getString("facilitador");
+                int cantidadCompras = rs.getInt("cantidad_compras");
+                double totalGastado = rs.getDouble("total_gastado");
+
+                writer.write(clienteId + "\t\t\t" + nombreCompleto + "\t\t\t" + facilitadorConsulta + "\t\t\t" + cantidadCompras + "\t\t\t" + totalGastado + "\n");
+            }
+            writer.flush();
+
+            lblReporteD.setText("Reporte creado correctamente");
+            limpiarD();
+            tiempoLabel(lblReporteD);
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
-    public void btnLimpiar(){
+    public void btnLimpiarB(){
         limpiarB();
+    }
+
+    @FXML
+    public void btnLimpiarD(){
+        limpiarD();
     }
 
     private void tiempoLabel(Label label){
@@ -124,5 +202,9 @@ public class ventanaAdminController implements Initializable {
         tfIDCliente.setText("");
         cbMes.getSelectionModel().selectFirst();
         tfAno.setText("");
+    }
+
+    private void limpiarD(){
+        cbFacilitador.getSelectionModel().selectFirst();
     }
 }

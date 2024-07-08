@@ -11,7 +11,7 @@ public class ventanaAdminApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ventanaAdminApplication.class.getResource("/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 642, 773);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

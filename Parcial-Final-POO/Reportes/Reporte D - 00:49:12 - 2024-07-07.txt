@@ -1,0 +1,5 @@
+Reporte D
+
+id_cliente	nombre_completo	facilitador	cantidad_compras	total_gastado
+1				Juan Perez				Visa				2				350.75
+2				Maria Lopez				Visa				1				120.3

@@ -6,19 +6,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.nio.Buffer;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,12 +21,9 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ventanaAdminController implements Initializable {
-    private File fileToLoad;
-
     @FXML
     Label lblExitoA;
 
@@ -97,8 +88,6 @@ public class ventanaAdminController implements Initializable {
         String id;          // 00001323 Declaro una variable id para almacenar el id del usuario
         String date1;       // 00001323 Declaro una variable String para almacenar una fecha
         String date2;       // 00001323 Obtiene una variable String para almacenar una fecha
-        DirectoryChooser directoryChooser = new DirectoryChooser();  // 00001323 Creo una variable Directory Choose para permitir que el usuario elija donde guardar su reporte
-        directoryChooser.setTitle("Seleccione donde guardar el reporte:"); // 00001323 Defino el titulo de la ventana emergente para indicarle al usuario que hacer
 
 
         if (tfClienteCompras!=null && dpDesde.getValue()!=null && dpHasta.getValue()!=null && !tfClienteCompras.getText().isEmpty()) { // 00001323 Si el usuario lleno los campos requeridos, continua con la funcion. Si no retorna un mensaje de error
@@ -118,11 +107,10 @@ public class ventanaAdminController implements Initializable {
                     Statement st = conn.createStatement();               // 00001323 Creo un nuevo statement para la siguiente consulta
                     ResultSet rs = st.executeQuery("select t.id, t.fecha, t.monto, t.descripcion, c.numero  FROM Transaccion t INNER JOIN Tarjeta c ON t.tarjeta_id = c.id WHERE fecha BETWEEN '"+ date1 +"'AND '"+date2+"' AND c.cliente_id = '" + id + "'"); // 00001323 Hago una consulta a la base de datos y guardo el resultado en una variable ResultSet
                     if(rs.isBeforeFirst()) {                                                                     // 00001323 Verifica que haya resultados almacenados de la consulta anterior
-                        File selectedDirectory = directoryChooser.showDialog(new Stage());                       // 00001323 Manda a llamar una ventana emergente que permite al usuario seleccionar la carpeta en la que guardara el reporte
                         lblErrorExportar.setText("");                                                            // 00001323 Remueve le mensaje de error en caso que hubiese fallado antes
 
                         try {                                                                                   // 00001323 Inicio un nuevo try Catch para detectar problemas al momento de abrir y escribir sobre el archivo.
-                            FileWriter writer = new FileWriter(selectedDirectory.getPath() + File.separator + "ReporteTransacciones-" + date1 + "--" + date2 + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
+                            FileWriter writer = new FileWriter("Reportes/" + File.separator + "ReporteTransacciones-" + date1 + "--" + date2 + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
                             writer.write("ID | FECHA | MONTO | DESCRIPCION | TERMINACION TARJETA");         // 00001323 Escribo sobre el archivo los nombres de las columna para que sea mas legible ya exportado
                             writer.write(System.lineSeparator());                                               // 00001323 Agregar un "next line"
                             writer.write(System.lineSeparator());                                               // 00001323 Agregar un "next line"
@@ -147,13 +135,9 @@ public class ventanaAdminController implements Initializable {
                     limpiarA();                                                                                 // 00001323 Se limpian los campos para que pueda intentar denuevo
                 }
                 conn.close();                                                                                   // 00001323 Cierro la conexion a la base de datos
-            } catch (Exception e) {                                                                         // 00001323 Capturo cualquier error al momento de abrir la base de datos o abriendo la carpeta seleccionada
-                if(directoryChooser == null){                                                               // 00001323 Esta condicion ayuda a determinar la reazon del error
-                    lblErrorTarjeta.setText("No se selecciono la ubicacion del archivo. Intente denuevo."); // 00001323 En caso que el Usuario cancele a la hora de seleccionar la ubicacion del archivo, retornara este error.
-                } else {                                                                                    // 00001323 Para otros errores que no se relacionan con la carpeta
-                    lblErrorTarjeta.setText("No se pude abrir la base de datos.");                          // 00001323 Muestro un mensaje de error al usuario para que pueda intentar nuevamente en caso que no se pueda abrir la base de datos
-                }
-                lblExitoA.setText("");                                                                      // 00001323 Actualizo el mensaje de exito para que no muestre nada.
+            } catch (Exception e) {                                                                         // 00001323 Capturo cualquier error al momento de abrir la base de datos
+                lblErrorTarjeta.setText("No se pude abrir la base de datos.");                          // 00001323 Muestro un mensaje de error al usuario para que pueda intentar nuevamente en caso que no se pueda abrir la base de datos
+                lblExitoA.setText("");                                                                  // 00001323 Actualizo el mensaje de exito para que no muestre nada.
             }
         } else {                                                                                       // 00001323 Si hay algun campo vacio, se corre la condicion siguiente
             lblErrorExportar.setText("Debe llenar todos los campos para poder exportar el reporte.");  // 00001323 Se muestra un mensaje al usuario pidiendo que llene todos los campos para poder continuar
@@ -163,8 +147,6 @@ public class ventanaAdminController implements Initializable {
 
     public void buscarTarjetas() {
         String id;                                                          // 00001323 Creo una variable donde almacenare el id ingresado
-        DirectoryChooser directoryChooser = new DirectoryChooser();         // 00001323 Creo una variable Directory Choose para permitir que el usuario elija donde guardar su reporte
-        directoryChooser.setTitle("Seleccione donde guardar el reporte:");  // 00001323 Defino el titulo de la ventana emergente para indicarle al usuario que hacer
 
         if (tfClienteConsultaTarjetas.getText() != null && !tfClienteConsultaTarjetas.getText().isEmpty()) { // 00001323 Verifica que le campo de ID de cliente no este vacio
             id = tfClienteConsultaTarjetas.getText();                                                        // 00001323 Asigno el contenido del textField a la variable ID
@@ -185,11 +167,10 @@ public class ventanaAdminController implements Initializable {
                     Statement st2 = conn.createStatement();                                               // 00001323 Creo un segundo statement para la siguiente consulta
                     ResultSet rsDebito = st2.executeQuery("SELECT * FROM Tarjeta WHERE cliente_id = '" + id + "' AND tipo = 'DEBITO'");    // 00001323 Ejecuto la consulta que retornara la informacion de todas las tarjetas de debito de un usuario en especifico
 
-                    File selectedDirectory = directoryChooser.showDialog(new Stage());                      // 00001323 Manda a llamar una ventana emergente que permite al usuario seleccionar la carpeta en la que guardara el reporte
                     lblErrorTarjeta.setText("");                                                            // 00001323 Remueve le mensaje de error en caso que hubiese fallado antes
 
                     try {                                                                                   // 00001323 Inicio un nuevo try Catch para detectar problemas al momento de abrir y escribir sobre el archivo.
-                        FileWriter writer = new FileWriter(selectedDirectory.getPath() + File.separator + "TarjetasDeCliente-" + id + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
+                        FileWriter writer = new FileWriter("Reportes/" + File.separator + "TarjetasDeCliente-" + id + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
                         writer.write("TARJETAS PERTENECIENTES A '" + nombre + "' - DUI: '" + dui + "'");         // 00001323 Escribo en el archivo un mensaje inicial
                         writer.write(System.lineSeparator());                                                        // 00001323 "Next line"
                         writer.write(System.lineSeparator());                                                        // 00001323 "Next line"
@@ -235,11 +216,7 @@ public class ventanaAdminController implements Initializable {
             } catch (
                     Exception e) {                                                                    // 00001323 Capturo cualquier error al momento de abrir la base de datos
                 System.out.println(e);                                                                 // 00001323 Imprimo la excepcion en consola
-                if (directoryChooser == null) {                                                          // 00001323 Si el usuario cancela la accion de seleccionar la ubicacion del archivo, el programa fallara y entrara a esta condicion
-                    lblErrorTarjeta.setText("No se selecciono la ubicacion del archivo. Intente denuevo."); // 00001323 Se mostrara un mensaje de error indicandole que debe intentar denuevo y seleccionar una ubicacion esta vez
-                } else {                                                                                    // 00001323 Para otros errores al intentar abrir la base de datos
-                    lblErrorTarjeta.setText("No se pude abrir la base de datos.");                        // 00001323 Muestro un mensaje de error al usuario para que pueda intentar nuevamente
-                }
+                lblErrorTarjeta.setText("No se pude abrir la base de datos.");                        // 00001323 Muestro un mensaje de error al usuario para que pueda intentar nuevamente
             }
 
         } else {                                                                                      // 00001323 Si el ID no existe en la bd, entra en esta condicion

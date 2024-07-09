@@ -33,6 +33,9 @@ public class ventanaClienteController implements Initializable {
     @FXML
     private Label lblT2;
 
+    @FXML
+    private Label lblErrorTar;
+
     ObservableList<String> tipoTarjeta = FXCollections.observableArrayList("Debito", "Credito");
     ObservableList<String> facilitador = FXCollections.observableArrayList("Visa", "MasterCard", "American Express");
 
@@ -46,35 +49,43 @@ public class ventanaClienteController implements Initializable {
 
     @FXML
     private void btnAsignarTarjeta(){
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345");
-
-            String nTar = generarNumero();
-            String fech = generarFecha();
-            String tipo = cbTipoTarjeta.getValue();
-            String fac = cbFacilitador.getValue();
+        if (!tfDUI.getText().isEmpty()) {
             int idCliente = obtenerIDCliente();
+            if (idCliente != -1){
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345");
 
-            String insertQuery = "INSERT INTO Tarjeta (numero, fecha_expiracion, tipo, facilitador, cliente_id) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+                    String nTar = generarNumero();
+                    String fech = generarFecha();
+                    String tipo = cbTipoTarjeta.getValue();
+                    String fac = cbFacilitador.getValue();
 
-            PreparedStatement ps = conn.prepareStatement(insertQuery);
-            ps.setString(1, nTar);
-            ps.setString(2, fech);
-            ps.setString(3, tipo);
-            ps.setString(4, fac);
-            ps.setInt(5, idCliente);
-            ps.executeUpdate();
+                    String insertQuery = "INSERT INTO Tarjeta (numero, fecha_expiracion, tipo, facilitador, cliente_id) " +
+                            "VALUES (?, ?, ?, ?, ?)";
 
-            lblT1.setText("Tu tarjeta se te fue asignada correctamente.");
-            lblT2.setText("Revisa el SMS en tu telefono para mayor informacion");
-            tiempoLabel(lblT1);
-            tiempoLabel(lblT2);
-            limpiparTar();
+                    PreparedStatement ps = conn.prepareStatement(insertQuery);
+                    ps.setString(1, nTar);
+                    ps.setString(2, fech);
+                    ps.setString(3, tipo);
+                    ps.setString(4, fac);
+                    ps.setInt(5, idCliente);
+                    ps.executeUpdate();
 
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                    lblT1.setText("Tu tarjeta se te fue asignada correctamente.");
+                    lblT2.setText("Revisa el SMS en tu telefono para mayor informacion");
+                    tiempoLabel(lblT1);
+                    tiempoLabel(lblT2);
+                    limpiparTar();
+
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                lblErrorTar.setText("El DUI ingresado no existe. Intente de nuevo");
+            }
+        } else {
+            lblErrorTar.setText("Debe ingresar su DUI!");
         }
     }
 
@@ -96,8 +107,7 @@ public class ventanaClienteController implements Initializable {
                 if (rs.next()) {
                     return rs.getInt(1);
                 } else {
-                    System.out.println("Cliente no encontrado para el DUI: " + DUI);
-                    return -1; // ID no encontrado
+                    return -1;
                 }
             }
 
@@ -140,6 +150,7 @@ public class ventanaClienteController implements Initializable {
         tfDUI.setText("");
         cbTipoTarjeta.getSelectionModel().selectFirst();
         cbFacilitador.getSelectionModel().selectFirst();
+        lblErrorTar.setText("");
     }
 
     private void tiempoLabel(Label label){

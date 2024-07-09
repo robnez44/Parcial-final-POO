@@ -75,6 +75,11 @@
                      <font>
                         <Font size="15.0" />
                      </font></Label>
+                  <Label fx:id="lblErrorExportar1" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="173.0" prefHeight="17.0" prefWidth="786.0" textFill="#5f9f56">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </content></TitledPane>
@@ -185,7 +190,7 @@
                               <Insets left="30.0" top="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="buscarTarjetas" mnemonicParsing="false" text="Buscar">
+                        <Button fx:id="buscarTarjetas" mnemonicParsing="false" onAction="#buscarTarjetas" text="Buscar">
                            <HBox.margin>
                               <Insets left="20.0" top="5.0" />
                            </HBox.margin>
@@ -199,6 +204,11 @@
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblExitoC" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="109.0" prefHeight="17.0" prefWidth="786.0" textFill="#5f9f56">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                </children></VBox>
          </content></TitledPane>

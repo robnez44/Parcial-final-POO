@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1942c5-e879-4770-8f4e-ebaffa445297" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Parcial-final-POO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Parcial-final-POO.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/DB/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/DB/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +51,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Parcial-Final-POO [:Database.main()].executor": "Run",
+    "Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
@@ -80,11 +80,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720558278582</updated>
-      <workItem from="1720558279955" duration="379000" />
+      <workItem from="1720558279955" duration="5253000" />
     </task>
+    <task id="LOCAL-00001" summary="Corrigiendo errores">
+      <option name="closed" value="true" />
+      <created>1720558745660</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720558745660</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Corrigiendo errores">
+      <option name="closed" value="true" />
+      <created>1720559118453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720559118453</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Corrigiendo errores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrigiendo errores" />
   </component>
 </project>

@@ -30,7 +30,7 @@ public class Database {//00070523 - Clase Database para manejar las conexiones y
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); //00070523 - Cargando el driver JDBC de MySQL
             //00070523 - Conectando a la base de datos "Sistema_Banco" con el usuario y contra
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Sistema_Banco", "Daniel_Murcia", "SandyMMDaniel10");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "chibirobo");
             System.out.println("Conexion a la base de datos realizada correctamente!!");
             return conn;
         } catch (Exception e) { //00070523 - Capturando excepciones en caso de errores

@@ -1,5 +1,6 @@
 package com.example.parcialfinalpoo.controllers;
 
+import com.example.parcialfinalpoo.DB.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -97,7 +98,8 @@ public class ventanaAdminController implements Initializable {
 
 
             try {                                                                                        // 00001323 Comienza un try para intentar establecer la connexion a la base de datos
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN","root","chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
+                //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN","root","chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
+                Connection conn = Database.ConexionBD();
 
                 PreparedStatement pst = conn.prepareStatement("SELECT * FROM Cliente WHERE id = ?"); // 00001323 Creo un statement que retorna la cantidad de usuarios que existen con el id ingresado. Si existe, deberia retornar 1, si no existe el cliente con ese id, retornara 0
                 pst.setString(1, id); // 00001323 Determino que valores se le pasaran a la consulta anterior
@@ -110,7 +112,11 @@ public class ventanaAdminController implements Initializable {
                         lblErrorExportar.setText("");                                                            // 00001323 Remueve le mensaje de error en caso que hubiese fallado antes
 
                         try {                                                                                   // 00001323 Inicio un nuevo try Catch para detectar problemas al momento de abrir y escribir sobre el archivo.
-                            FileWriter writer = new FileWriter("Reportes/" + File.separator + "ReporteTransacciones-" + date1 + "--" + date2 + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
+                            LocalDateTime now = LocalDateTime.now(); // 00001323 crea un objeto LocalDateTime con la hora actual
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss"); // 00001323 formatea la hora a un formato de hh-mm-ss
+                            String hora = now.format(formatter); // 00001323 obtiene la hora actual
+
+                            FileWriter writer = new FileWriter("Parcial-Final-POO/Reportes" + File.separator + "ReporteA-" + LocalDate.now() + "-" + hora + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
                             writer.write("ID | FECHA | MONTO | DESCRIPCION | TERMINACION TARJETA");         // 00001323 Escribo sobre el archivo los nombres de las columna para que sea mas legible ya exportado
                             writer.write(System.lineSeparator());                                               // 00001323 Agregar un "next line"
                             writer.write(System.lineSeparator());                                               // 00001323 Agregar un "next line"
@@ -152,7 +158,8 @@ public class ventanaAdminController implements Initializable {
             id = tfClienteConsultaTarjetas.getText();                                                        // 00001323 Asigno el contenido del textField a la variable ID
 
             try {                                                                                        // 00001323 Comienza un try para intentar establecer la connexion a la base de datos
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
+                //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
+                Connection conn = Database.ConexionBD();
 
                 PreparedStatement pst = conn.prepareStatement("SELECT * FROM Cliente WHERE id = ?"); // 00001323 Creo un statement que retorna la informacion de usuarios que existen con el id ingresado
                 pst.setString(1, id);                                                        // 00001323 Estableciendo los parametros necesarios para el statement anterior
@@ -170,7 +177,12 @@ public class ventanaAdminController implements Initializable {
                     lblErrorTarjeta.setText("");                                                            // 00001323 Remueve le mensaje de error en caso que hubiese fallado antes
 
                     try {                                                                                   // 00001323 Inicio un nuevo try Catch para detectar problemas al momento de abrir y escribir sobre el archivo.
-                        FileWriter writer = new FileWriter("Reportes/" + File.separator + "TarjetasDeCliente-" + id + ".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
+                        LocalDateTime now = LocalDateTime.now(); // 00001323 crea un objeto LocalDateTime con la hora actual
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss"); // 00001323 formatea la hora a un formato de hh-mm-ss
+                        String hora = now.format(formatter); // 00001323 obtiene la hora actual
+
+
+                        FileWriter writer = new FileWriter("Parcial-Final-POO/Reportes" + File.separator + "ReporteC-" + LocalDate.now() + "-" + hora +".txt"); // 00001323 Declaro e instancio un nuevo FileWriter en la carpeta seleccionada por el usuario y sobre el archivo
                         writer.write("TARJETAS PERTENECIENTES A '" + nombre + "' - DUI: '" + dui + "'");         // 00001323 Escribo en el archivo un mensaje inicial
                         writer.write(System.lineSeparator());                                                        // 00001323 "Next line"
                         writer.write(System.lineSeparator());                                                        // 00001323 "Next line"
@@ -270,7 +282,8 @@ public class ventanaAdminController implements Initializable {
                 int ano = Integer.parseInt(tfAno.getText()); // 00044623 convierte el año a entero
 
                 try {
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 se conecta a la base de datos
+                    //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 se conecta a la base de datos
+                    Connection conn = Database.ConexionBD();
 
                     int mes = cbMes.getSelectionModel().getSelectedIndex() + 1; // 00044623 se obtiene el mes a traves del indice
                     String query = "SELECT SUM(t.monto) AS total_gastado " + // 00044623 se define consulta SQL para obtener el total gastado
@@ -292,11 +305,11 @@ public class ventanaAdminController implements Initializable {
                     }
 
                     LocalDateTime now = LocalDateTime.now(); // crea un objeto LocalDateTime con la hora actual
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss"); // formatea la hora a un formato de hh:mm:ss
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss"); // formatea la hora a un formato de hh-mm-ss
                     String hora = now.format(formatter); // 00044623 obtiene la hora actual
 
                     String nombreArchivo = "Reporte B - " + hora + " - " + LocalDate.now() + ".txt"; // 00044623 define el nombre del archivo
-                    String rutaArchivo = "Reportes/" + nombreArchivo; // 00044623 define la ruta del archivo
+                    String rutaArchivo = "Parcial-Final-POO/Reportes" + File.separator + nombreArchivo; // 00044623 define la ruta del archivo
                     File file = new File(rutaArchivo); // 00044623 crea un archivo con la ruta especificada
 
                     Writer writer = new FileWriter(file); // 00044623 crea un escritor para el archivo
@@ -322,9 +335,11 @@ public class ventanaAdminController implements Initializable {
     @FXML
     public void crearReporteD(){ // 00044623 metodo para crear reporte D
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 conecta a la base de datos
+            //Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 conecta a la base de datos
+            Connection conn = Database.ConexionBD();
 
             String facilitador = cbFacilitador.getValue(); // 00044623 obtiene el facilitador seleccionado
+            System.out.println(facilitador);
 
             String query = "SELECT " +
                     "c.id AS cliente_id, " +
@@ -347,16 +362,18 @@ public class ventanaAdminController implements Initializable {
             pstmt.setString(1, facilitador); // 00044623 establece el facilitador en la consulta
             ResultSet rs = pstmt.executeQuery(); // 00044623 ejecuta la consulta
 
+            System.out.println(rs);
+
             LocalDateTime now = LocalDateTime.now(); // crea un objeto LocalDateTime con la hora actual
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss"); // formatea la hora a un formato de hh:mm:ss
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH-mm-ss"); // formatea la hora a un formato de hh:mm:ss
             String hora = now.format(formatter); // 00044623 obtiene la hora actual
 
             String nombreArchivo = "Reporte D - " + hora + " - " + LocalDate.now() + ".txt"; // 00044623 define el nombre del archivo
-            String rutaArchivo = "Reportes/" + nombreArchivo; // 00044623 define la ruta del archivo
+            String rutaArchivo = "Parcial-Final-POO/Reportes" + File.separator + nombreArchivo; // 00044623 define la ruta del archivo
             File file = new File(rutaArchivo); // 00044623 crea un archivo con la ruta especificada
             Writer writer = new FileWriter(file); // 00044623 crea un escritor para el archivo
 
-            if (rs.next()) { // 00044623 verifica si hay resultados en la consulta
+            if (rs.isBeforeFirst()) { // 00044623 verifica si hay resultados en la consulta
                 writer.write("Reporte D\n\n" + "id_cliente\tnombre_completo\tfacilitador\tcantidad_compras\ttotal_gastado\n");
                 while (rs.next()) { // 00044623 itera sobre los resultados de la consulta
                     int clienteId = rs.getInt("cliente_id"); // 00044623 obtiene el ID del cliente

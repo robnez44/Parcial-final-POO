@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="773.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcialfinalpoo.controllers.ventanaAdminController">
+<Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="773.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.parcialfinalpoo.controllers.ventanaAdminController">
   <panes>
     <TitledPane text="Consultar compras realizadas">
          <content>
@@ -94,12 +94,21 @@
                   </Label>
                   <VBox prefHeight="116.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="ID de cliente">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField prefWidth="403.0" />
+                        <HBox prefHeight="3.0" prefWidth="620.0">
+                           <children>
+                              <Label text="ID de cliente">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblErrorIDB" textFill="RED">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="tfIDCliente" prefWidth="403.0" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -108,43 +117,57 @@
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="155.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Elige el mes">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox prefWidth="150.0" promptText="Mes" />
+                        <ComboBox fx:id="cbMes" prefWidth="150.0" />
                      </children>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="150.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="118.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Escribe el ano">
+                        <HBox prefHeight="11.0" prefWidth="620.0">
+                           <children>
+                              <Label text="Escribe el ano">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblErrorAnoB" textFill="RED">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="tfAno" prefWidth="403.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="132.0" prefWidth="620.0">
+                     <children>
+                        <Label fx:id="lblReporteB">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField prefWidth="403.0" />
+                        <Label fx:id="lblError3B" textFill="RED" />
                      </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
                   </VBox>
-                  <Label text="Reporte creado correctamente">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <HBox prefHeight="54.0" prefWidth="620.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Crear reporte">
+                        <Button fx:id="btnCrearReporteB" mnemonicParsing="false" onAction="#crearReporteB" text="Crear reporte">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -152,7 +175,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" text="Limpiar">
+                        <Button mnemonicParsing="false" onAction="#btnLimpiarB" text="Limpiar">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -228,7 +251,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox prefWidth="150.0" promptText="Facilitador" />
+                        <ComboBox fx:id="cbFacilitador" prefWidth="150.0" promptText="Facilitador" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -237,7 +260,7 @@
                         <Insets top="50.0" />
                      </padding>
                   </VBox>
-                  <Label text="Reporte creado correctamente">
+                  <Label fx:id="lblReporteD">
                      <VBox.margin>
                         <Insets bottom="60.0" />
                      </VBox.margin>
@@ -247,7 +270,7 @@
                   </Label>
                   <HBox prefHeight="68.0" prefWidth="620.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Crear reporte">
+                        <Button mnemonicParsing="false" onAction="#crearReporteD" text="Crear reporte">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -255,7 +278,7 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" text="Limpiar">
+                        <Button mnemonicParsing="false" onAction="#btnLimpiarD" text="Limpiar">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>

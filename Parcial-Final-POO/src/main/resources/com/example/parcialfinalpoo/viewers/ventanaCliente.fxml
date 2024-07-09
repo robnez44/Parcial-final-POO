@@ -53,11 +53,20 @@
                   </VBox>
                   <VBox prefHeight="150.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Escribe tu DUI">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <HBox prefHeight="0.0" prefWidth="620.0">
+                           <children>
+                              <Label text="Escribe tu DUI">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblErrorTar" textFill="#ff6100">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                         <TextField fx:id="tfDUI" onAction="#btnLimpiarTarjeta" prefWidth="403.0" />
                      </children>
                      <padding>
@@ -105,6 +114,5 @@
             </VBox>
          </content>
     </TitledPane>
-    <TitledPane text="Transacciones" />
   </panes>
 </Accordion>

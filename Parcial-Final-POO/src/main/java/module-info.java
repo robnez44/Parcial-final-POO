@@ -5,6 +5,7 @@ module com.example.parcialfinalpoo {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.media;
     requires java.desktop;
 
     exports com.example.parcialfinalpoo;

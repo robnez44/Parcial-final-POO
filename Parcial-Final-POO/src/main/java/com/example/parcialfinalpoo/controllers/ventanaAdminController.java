@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ventanaAdminController implemente Initializable {
+public class ventanaAdminController implements Initializable {
     private File fileToLoad;
 
     @FXML
@@ -161,7 +161,7 @@ public class ventanaAdminController implemente Initializable {
         }
     }
 
-    public void buscarTarjetas(){
+    public void buscarTarjetas() {
         String id;                                                          // 00001323 Creo una variable donde almacenare el id ingresado
         DirectoryChooser directoryChooser = new DirectoryChooser();         // 00001323 Creo una variable Directory Choose para permitir que el usuario elija donde guardar su reporte
         directoryChooser.setTitle("Seleccione donde guardar el reporte:");  // 00001323 Defino el titulo de la ventana emergente para indicarle al usuario que hacer
@@ -170,10 +170,10 @@ public class ventanaAdminController implemente Initializable {
             id = tfClienteConsultaTarjetas.getText();                                                        // 00001323 Asigno el contenido del textField a la variable ID
 
             try {                                                                                        // 00001323 Comienza un try para intentar establecer la connexion a la base de datos
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN","root","chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "chibirobo");    // 00001323 Intenta conectarse a la BD creada para la aplicacion
 
                 PreparedStatement pst = conn.prepareStatement("SELECT * FROM Cliente WHERE id = ?"); // 00001323 Creo un statement que retorna la informacion de usuarios que existen con el id ingresado
-                pst.setString(1,id);                                                        // 00001323 Estableciendo los parametros necesarios para el statement anterior
+                pst.setString(1, id);                                                        // 00001323 Estableciendo los parametros necesarios para el statement anterior
                 ResultSet rsUser = pst.executeQuery();                                                    // 00001323 Ejecuto la consulta para obtener el resultado
 
                 if (rsUser.next()) {                                                                      // 00001323 Verifico si la consulta anterior retorno algun resultado. Si es asi, el id ingresado es valido
@@ -181,9 +181,9 @@ public class ventanaAdminController implemente Initializable {
                     String dui = rsUser.getString(3);                                          // 00001323 Asigno el dui del resultado obtenido a una variable String
 
                     Statement st1 = conn.createStatement();                                               // 00001323 Creo un primer statement para la siguiente consulta
-                    ResultSet rsCredito = st1.executeQuery("SELECT * FROM Tarjeta WHERE cliente_id = '"+id+"' AND tipo = 'CREDITO'");  // 00001323 Ejecuto la consulta que retornara la informacion de todas las tarjetas de credito de un usuario en especifico
+                    ResultSet rsCredito = st1.executeQuery("SELECT * FROM Tarjeta WHERE cliente_id = '" + id + "' AND tipo = 'CREDITO'");  // 00001323 Ejecuto la consulta que retornara la informacion de todas las tarjetas de credito de un usuario en especifico
                     Statement st2 = conn.createStatement();                                               // 00001323 Creo un segundo statement para la siguiente consulta
-                    ResultSet rsDebito = st2.executeQuery("SELECT * FROM Tarjeta WHERE cliente_id = '"+id+"' AND tipo = 'DEBITO'");    // 00001323 Ejecuto la consulta que retornara la informacion de todas las tarjetas de debito de un usuario en especifico
+                    ResultSet rsDebito = st2.executeQuery("SELECT * FROM Tarjeta WHERE cliente_id = '" + id + "' AND tipo = 'DEBITO'");    // 00001323 Ejecuto la consulta que retornara la informacion de todas las tarjetas de debito de un usuario en especifico
 
                     File selectedDirectory = directoryChooser.showDialog(new Stage());                      // 00001323 Manda a llamar una ventana emergente que permite al usuario seleccionar la carpeta en la que guardara el reporte
                     lblErrorTarjeta.setText("");                                                            // 00001323 Remueve le mensaje de error en caso que hubiese fallado antes
@@ -225,15 +225,17 @@ public class ventanaAdminController implemente Initializable {
                         lblExitoC.setText("Reporte generado con exito.");                                       // 00001323 Muestra un mensaje de exito
                         lblErrorTarjeta.setText("");                                                            // 00001323 Remueve cualquier mensaje de error que haya sido mostrado antes
 
-                    } catch (IOException e) {                                                               // 00001323 Capturo cualquier error al momento de abrir o escribir en el archivo.
+                    } catch (
+                            IOException e) {                                                               // 00001323 Capturo cualquier error al momento de abrir o escribir en el archivo.
                         System.out.println(e);                                                              // 00001323 Imprimo la excepcion en la consola
                         lblErrorTarjeta.setText("Error al guardar el reporte. Archivo no se pudo crear."); // 00001323 Mando un mensaje de error que se le muestra al usuario en caso que haya algun problema
                     }
                     conn.close();                                                                      // 00001323 Cierro la conexion a la base de datos
                 }
-            } catch (Exception e) {                                                                    // 00001323 Capturo cualquier error al momento de abrir la base de datos
+            } catch (
+                    Exception e) {                                                                    // 00001323 Capturo cualquier error al momento de abrir la base de datos
                 System.out.println(e);                                                                 // 00001323 Imprimo la excepcion en consola
-                if(directoryChooser == null){                                                          // 00001323 Si el usuario cancela la accion de seleccionar la ubicacion del archivo, el programa fallara y entrara a esta condicion
+                if (directoryChooser == null) {                                                          // 00001323 Si el usuario cancela la accion de seleccionar la ubicacion del archivo, el programa fallara y entrara a esta condicion
                     lblErrorTarjeta.setText("No se selecciono la ubicacion del archivo. Intente denuevo."); // 00001323 Se mostrara un mensaje de error indicandole que debe intentar denuevo y seleccionar una ubicacion esta vez
                 } else {                                                                                    // 00001323 Para otros errores al intentar abrir la base de datos
                     lblErrorTarjeta.setText("No se pude abrir la base de datos.");                        // 00001323 Muestro un mensaje de error al usuario para que pueda intentar nuevamente
@@ -243,6 +245,7 @@ public class ventanaAdminController implemente Initializable {
         } else {                                                                                      // 00001323 Si el ID no existe en la bd, entra en esta condicion
             lblErrorTarjeta.setText("Debe ingresar el id del cliente");                               // 00001323 Se muestra un mensaje de error en la consola
         }
+    }
 
     // crear una lista observable para el ComboBox
     ObservableList<String> meses = FXCollections.observableArrayList(

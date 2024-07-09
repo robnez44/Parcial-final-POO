@@ -25,11 +25,20 @@
                   </Label>
                   <VBox prefHeight="116.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="ID de cliente">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <HBox prefHeight="3.0" prefWidth="620.0">
+                           <children>
+                              <Label text="ID de cliente">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblErrorIDB" textFill="RED">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                         <TextField fx:id="tfIDCliente" prefWidth="403.0" />
                      </children>
                      <VBox.margin>
@@ -39,7 +48,7 @@
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="155.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label text="Elige el mes">
                            <font>
@@ -52,27 +61,41 @@
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="150.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="118.0" prefWidth="620.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Escribe el ano">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <HBox prefHeight="11.0" prefWidth="620.0">
+                           <children>
+                              <Label text="Escribe el ano">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblErrorAnoB" textFill="RED">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                         <TextField fx:id="tfAno" prefWidth="403.0" />
                      </children>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <Label fx:id="lblReporteB">
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <VBox prefHeight="132.0" prefWidth="620.0">
+                     <children>
+                        <Label fx:id="lblReporteB">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblError3B" textFill="RED" />
+                     </children>
+                  </VBox>
                   <HBox prefHeight="54.0" prefWidth="620.0" spacing="10.0">
                      <children>
                         <Button fx:id="btnCrearReporteB" mnemonicParsing="false" onAction="#crearReporteB" text="Crear reporte">

@@ -43,6 +43,15 @@ public class ventanaAdminController implements Initializable {
     private Label lblReporteD;
 
     @FXML
+    private Label lblErrorIDB;
+
+    @FXML
+    private Label lblErrorAnoB;
+
+    @FXML
+    private Label lblError3B;
+
+    @FXML
     private Button btbCrearReporteB;
 
     // crear una lista observable para el ComboBox
@@ -65,56 +74,79 @@ public class ventanaAdminController implements Initializable {
 
     @FXML
     public void crearReporteB(){
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345");
+        if (tfIDCliente.getText().isEmpty() && tfAno.getText().isEmpty()) {
+            lblError3B.setText("Debe llenar todos los campos");
+            tiempoLabel(lblError3B, 5);
+        } else if (tfAno.getText().isEmpty()) {
+            lblErrorAnoB.setText("Debe ingresar el ano");
+            tiempoLabel(lblErrorAnoB, 5);
+        } else if (tfIDCliente.getText().isEmpty()) {
+            lblErrorIDB.setText("Debe ingresar el ID");
+            tiempoLabel(lblErrorIDB, 5);
+        } else {
+            String idClienteS = tfIDCliente.getText();
+            String anoS = tfAno.getText();
+            if (!esEntero(idClienteS) && !esEntero(anoS)) {
+                lblError3B.setText("Debe ingresar numeros validos");
+                tiempoLabel(lblError3B, 5);
+            } else if (!esEntero(idClienteS)) {
+                lblErrorIDB.setText("Debe ingresar un ID valido");
+                tiempoLabel(lblErrorIDB, 5);
+            } else if (!esEntero(anoS)) {
+                lblErrorAnoB.setText("Debe ingresar un ano valido");
+                tiempoLabel(lblErrorAnoB, 5);
+            } else {
+                int idCliente = Integer.parseInt(tfIDCliente.getText());
+                int ano = Integer.parseInt(tfAno.getText());
 
-            int idCliente = Integer.parseInt(tfIDCliente.getText());
-            int mes = cbMes.getSelectionModel().getSelectedIndex() + 1; // Obtener el índice del mes seleccionado
-            int ano = Integer.parseInt(tfAno.getText());
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345");
 
-            // Consulta con PreparedStatement
-            String query = "SELECT SUM(t.monto) AS total_gastado " +
-                    "FROM Transaccion t " +
-                    "JOIN Tarjeta tar ON t.tarjeta_id = tar.id " +
-                    "JOIN Cliente c ON tar.cliente_id = c.id " +
-                    "WHERE c.id = ? AND MONTH(t.fecha) = ? AND YEAR(t.fecha) = ?";
+                    int mes = cbMes.getSelectionModel().getSelectedIndex() + 1; // Obtener el índice del mes seleccionado
 
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1, idCliente); // ID del cliente
-            pstmt.setInt(2, mes);    // Mes
-            pstmt.setInt(3, ano);    // Año
+                    String query = "SELECT SUM(t.monto) AS total_gastado " +
+                            "FROM Transaccion t " +
+                            "JOIN Tarjeta tar ON t.tarjeta_id = tar.id " +
+                            "JOIN Cliente c ON tar.cliente_id = c.id " +
+                            "WHERE c.id = ? AND MONTH(t.fecha) = ? AND YEAR(t.fecha) = ?";
 
-            ResultSet rs = pstmt.executeQuery();
-            double totalGastado = 0;
+                    PreparedStatement pstmt = conn.prepareStatement(query);
+                    pstmt.setInt(1, idCliente); // ID del cliente
+                    pstmt.setInt(2, mes);    // Mes
+                    pstmt.setInt(3, ano);    // Año
 
-            if (rs.next()) {
-                totalGastado = rs.getDouble("total_gastado");
+                    ResultSet rs = pstmt.executeQuery();
+                    double totalGastado = 0;
+
+                    if (rs.next()) {
+                        totalGastado = rs.getDouble("total_gastado");
+                    }
+
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    String hora = now.format(formatter);
+
+                    String nombreArchivo = "Reporte B - " + hora + " - " + LocalDate.now() + ".txt";
+                    String rutaArchivo = "Reportes/" + nombreArchivo;
+                    File file = new File(rutaArchivo);
+
+                    Writer writer = new FileWriter(file);
+                    writer.write("Reporte B - Total gastado por el cliente en " + cbMes.getValue() + " del " + ano + ": ");
+                    writer.write(String.valueOf(totalGastado));
+                    writer.flush();
+
+                    lblReporteB.setText("Reporte creado correctamente");
+                    limpiarB();
+                    tiempoLabel(lblReporteB, 2);
+
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("No se pudo conectar a la bd");
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
-
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            String hora = now.format(formatter);
-
-            String nombreArchivo = "Reporte B - " + hora + " - " + LocalDate.now() + ".txt";
-            String rutaArchivo = "Reportes/" + nombreArchivo;
-            File file = new File(rutaArchivo);
-
-            // Escribir el archivo
-            Writer writer = new FileWriter(file);
-            writer.write("Reporte B - Total gastado por el cliente en " + cbMes.getValue() + " del " + ano + ": ");
-            writer.write(String.valueOf(totalGastado));
-            writer.flush();
-
-            lblReporteB.setText("Reporte creado correctamente");
-            limpiarB();
-            tiempoLabel(lblReporteB);
-
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("No se pudo conectar a la bd");
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
     
@@ -154,22 +186,26 @@ public class ventanaAdminController implements Initializable {
             String rutaArchivo = "Reportes/" + nombreArchivo;
             File file = new File(rutaArchivo);
             Writer writer = new FileWriter(file);
-            writer.write("Reporte D\n\n" + "id_cliente\tnombre_completo\tfacilitador\tcantidad_compras\ttotal_gastado\n");
 
-            while (rs.next()) {
-                int clienteId = rs.getInt("cliente_id");
-                String nombreCompleto = rs.getString("nombre_completo");
-                String facilitadorConsulta = rs.getString("facilitador");
-                int cantidadCompras = rs.getInt("cantidad_compras");
-                double totalGastado = rs.getDouble("total_gastado");
+            if (rs.next()) {
+                writer.write("Reporte D\n\n" + "id_cliente\tnombre_completo\tfacilitador\tcantidad_compras\ttotal_gastado\n");
+                while (rs.next()) {
+                    int clienteId = rs.getInt("cliente_id");
+                    String nombreCompleto = rs.getString("nombre_completo");
+                    String facilitadorConsulta = rs.getString("facilitador");
+                    int cantidadCompras = rs.getInt("cantidad_compras");
+                    double totalGastado = rs.getDouble("total_gastado");
 
-                writer.write(clienteId + "\t\t\t" + nombreCompleto + "\t\t\t" + facilitadorConsulta + "\t\t\t" + cantidadCompras + "\t\t\t" + totalGastado + "\n");
+                    writer.write(clienteId + "\t\t\t" + nombreCompleto + "\t\t\t" + facilitadorConsulta + "\t\t\t" + cantidadCompras + "\t\t\t" + totalGastado + "\n");
+                }
+            } else {
+                writer.write("Reporte D: No existe ningun cliente con el facilitador: " + facilitador);
             }
             writer.flush();
 
             lblReporteD.setText("Reporte creado correctamente");
             limpiarD();
-            tiempoLabel(lblReporteD);
+            tiempoLabel(lblReporteD, 2);
 
             conn.close();
         } catch (SQLException e) {
@@ -189,13 +225,22 @@ public class ventanaAdminController implements Initializable {
         limpiarD();
     }
 
-    private void tiempoLabel(Label label){
+    private void tiempoLabel(Label label, double tiempo){
         label.setVisible(true);
-        Duration duration = Duration.seconds(2);
+        Duration duration = Duration.seconds(tiempo);
         Timeline timeline = new Timeline(new KeyFrame(duration, event -> {
             label.setVisible(false);
         }));
         timeline.play();
+    }
+
+    private boolean esEntero(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private void limpiarB(){
@@ -208,3 +253,6 @@ public class ventanaAdminController implements Initializable {
         cbFacilitador.getSelectionModel().selectFirst();
     }
 }
+
+
+

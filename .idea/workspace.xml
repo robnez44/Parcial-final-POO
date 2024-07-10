@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1942c5-e879-4770-8f4e-ebaffa445297" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/imagenes/Logo1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/imagenes/Logo2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaCliente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,26 +48,31 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2j1cyLSef39cQ4iSQBNxmlDSIct" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Parcial-Final-POO [:Database.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Parcial-Final-POO [:menuInicioSesionApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Gradle.Parcial-Final-POO [:Database.main()].executor": "Run",
+    "Gradle.Parcial-Final-POO [:menuInicioSesionApplication.main()].executor": "Run",
+    "Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Parcial-final-POO" />
@@ -99,6 +107,8 @@
       <workItem from="1720558279955" duration="6899000" />
       <workItem from="1720565206484" duration="576000" />
       <workItem from="1720565796294" duration="4499000" />
+      <workItem from="1720570521344" duration="529000" />
+      <workItem from="1720571222123" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="Corrigiendo errores">
       <option name="closed" value="true" />
@@ -131,6 +141,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Corrigiendo errores" />
     <option name="LAST_COMMIT_MESSAGE" value="Corrigiendo errores" />
   </component>

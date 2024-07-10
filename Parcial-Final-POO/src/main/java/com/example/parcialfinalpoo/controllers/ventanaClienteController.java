@@ -1,5 +1,6 @@
 package com.example.parcialfinalpoo.controllers;
 
+import com.example.parcialfinalpoo.DB.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -53,7 +54,7 @@ public class ventanaClienteController implements Initializable {
 
             if (idCliente != -1){ // 00044623 verifica si se encontró un ID válido
                 try {
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 establece la conexión a la base de datos
+                    Connection conn = Database.ConexionBD(); // 00044623 establece la conexión a la base de datos
 
                     String nTar = generarNumero(); // 00044623 genera un número de tarjeta aleatorio
                     String fech = generarFecha(); // 00044623 genera una fecha de expiración aleatoria
@@ -99,7 +100,7 @@ public class ventanaClienteController implements Initializable {
         String DUI = tfDUI.getText(); // 00044623 obtiene el valor del campo tfDUI
         String query = "SELECT id FROM Cliente WHERE DUI = ?"; // 00044623 define la consulta SQL para obtener el ID del cliente
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "rober", "12345"); // 00044623 establece la conexión a la base de datos
+        try (Connection conn = Database.ConexionBD(); // 00044623 establece la conexión a la base de datos
              PreparedStatement ps = conn.prepareStatement(query)) { // 00044623 prepara la declaración SQL
 
             ps.setString(1, DUI); // 00044623 establece el valor de DUI en la consulta preparada

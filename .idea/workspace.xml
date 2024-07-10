@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1942c5-e879-4770-8f4e-ebaffa445297" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/DB/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/DB/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaClienteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,30 +40,46 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2j1cyLSef39cQ4iSQBNxmlDSIct" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Parcial-Final-POO [:Database.main()].executor": "Run",
-    "Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Parcial-Final-POO [:Database.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Parcial-Final-POO [:menuInicioSesionApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Parcial-final-POO" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Parcial-final-POO" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,7 +96,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720558278582</updated>
-      <workItem from="1720558279955" duration="5253000" />
+      <workItem from="1720558279955" duration="6899000" />
+      <workItem from="1720565206484" duration="576000" />
+      <workItem from="1720565796294" duration="4499000" />
     </task>
     <task id="LOCAL-00001" summary="Corrigiendo errores">
       <option name="closed" value="true" />
@@ -98,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720559118453</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Corrigiendo errores">
+      <option name="closed" value="true" />
+      <created>1720563695575</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720563695575</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,5 +1,6 @@
 package com.example.parcialfinalpoo.controllers;
 
+import com.example.parcialfinalpoo.DB.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -92,7 +93,9 @@ public class loginClienteController implements Initializable {
         }
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "Root");
+            // Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "Root");
+            Connection connection = Database.ConexionBD();
+
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM Cliente WHERE dui='" + dui + "' AND contrasenia='" + password + "'";
             ResultSet resultSet = statement.executeQuery(query);

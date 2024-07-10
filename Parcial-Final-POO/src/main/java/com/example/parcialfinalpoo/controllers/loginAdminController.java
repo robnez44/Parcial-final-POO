@@ -1,11 +1,13 @@
 package com.example.parcialfinalpoo.controllers;
 
+import com.example.parcialfinalpoo.DB.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -92,7 +94,9 @@ public class loginAdminController implements Initializable {
         }
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "Root");
+            //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/BCN", "root", "Root");
+            Connection connection = Database.ConexionBD();
+
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM Admin WHERE username='" + username + "' AND password='" + password + "'";
             ResultSet resultSet = statement.executeQuery(query);
@@ -101,7 +105,7 @@ public class loginAdminController implements Initializable {
                 Stage loginStage = (Stage) usernameTextFile.getScene().getWindow();
                 loginStage.close();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/parcialfinalpoo/viewers/ventanaAdminC.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/parcialfinalpoo/viewers/ventanaAdmin.fxml"));
                 Parent root = loader.load();
                 ventanaAdminController controller = loader.getController();
 

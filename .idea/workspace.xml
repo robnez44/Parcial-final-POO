@@ -6,7 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="3f1942c5-e879-4770-8f4e-ebaffa445297" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/loginClienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte B - 16-07-28 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte B - 18-09-22 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte B - 20-10-27 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte B - 20-30-03 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte D - 16-19-06 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte D - 18-09-44 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte D - 20-10-37 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/Reporte D - 20-30-22 - 2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteA-2024-07-09-18-09-04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteA-2024-07-09-20-10-18.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteA-2024-07-09-20-29-52.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteA-2024-07-09.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteC-2024-07-09-16-07-37.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteC-2024-07-09-18-09-35.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteC-2024-07-09-19-17-10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteC-2024-07-09-20-10-32.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/Reportes/ReporteC-2024-07-09-20-30-11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/java/com/example/parcialfinalpoo/controllers/ventanaAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/crearCuenta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Parcial-Final-POO/src/main/resources/com/example/parcialfinalpoo/viewers/crearCuenta.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,26 +68,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.Parcial-Final-POO [:Database.main()].executor": "Run",
-    "Gradle.Parcial-Final-POO [:menuInicioSesionApplication.main()].executor": "Run",
-    "Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor": "Run",
-    "Gradle.Parcial-Final-POO [:ventanaClienteApplication.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Parcial-Final-POO [:Database.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Parcial-Final-POO [:menuInicioSesionApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Parcial-Final-POO [:ventanaAdminApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Parcial-Final-POO [:ventanaClienteApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Parcial-final-POO" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Parcial-final-POO" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Parcial-final-POO" />
       <method v="2">
@@ -104,7 +135,8 @@
       <workItem from="1720565206484" duration="576000" />
       <workItem from="1720565796294" duration="4499000" />
       <workItem from="1720570521344" duration="529000" />
-      <workItem from="1720571222123" duration="7528000" />
+      <workItem from="1720571222123" duration="9535000" />
+      <workItem from="1720583294378" duration="1826000" />
     </task>
     <task id="LOCAL-00001" summary="Corrigiendo errores">
       <option name="closed" value="true" />
@@ -154,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720580558848</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Corrigiendo errores">
+      <option name="closed" value="true" />
+      <created>1720581416289</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720581416289</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

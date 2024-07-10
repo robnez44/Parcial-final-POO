@@ -1,4 +1,0 @@
-Reporte D
-
-id_cliente	nombre_completo	facilitador	cantidad_compras	total_gastado
-1			Carlos Rivas			Visa			1			15.0

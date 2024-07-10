@@ -224,6 +224,8 @@ public class ventanaAdminController implements Initializable {
                         lblErrorTarjeta.setText("Error al guardar el reporte. Archivo no se pudo crear."); // 00001323 Mando un mensaje de error que se le muestra al usuario en caso que haya algun problema
                     }
                     conn.close();                                                                      // 00001323 Cierro la conexion a la base de datos
+                } else {
+                    lblErrorTarjeta.setText("El ID de cliente ingresado no existe. Intentelo de nuevo.");      // 00001323 Se retorna un mensaje de error
                 }
             } catch (
                     Exception e) {                                                                    // 00001323 Capturo cualquier error al momento de abrir la base de datos

@@ -9,6 +9,7 @@ Parcial final de Programacion Orientada a Objetos utilizando JavaFX y una base d
 ### Proceso de configuración
 - Se debe crear la base de datos con el codigo SQL en el repositorio, llamado CodigoSQL.sql. Recomendado nombrar la base de datos "BCN".
 - Se debe establecer en la clase llamada Database.java el nombre de la base de datos, un usuario y una contraseña
+- El programa corre desde el archivo menuInicioSesionApplication.java
 ## Creditos
 - **[Carlos Roberto Rivas Orellana](https://github.com/carlomi)**
 - **[Roberto Eliseo Martinez Rodriguez](https://github.com/robnez44)**

@@ -48,14 +48,14 @@ public class ventanaClienteController implements Initializable {
     }
 
     @FXML
-    private void btnAsignarTarjeta(){ // metodo para asignar una tarjeta a un cliente
-        if (!tfDUI.getText().isEmpty()) { // 00044623 verifica si el campo tfDUI no está vacío
+    public void btnAsignarTarjeta(){ // metodo para asignar una tarjeta a un cliente
+        if (!tfDUI.getText().isEmpty()) { // 00044623 verifica si el campo tfDUI no esta vacío
             int idCliente = obtenerIDCliente(); // 00044623 obtiene el ID del cliente
 
             if (idCliente != -1){ // 00044623 verifica si se encontró un ID válido
                 try {
                     Connection conn = Database.ConexionBD(); // 00044623 establece la conexión a la base de datos
-
+                    System.out.println("test");
                     String nTar = generarNumero(); // 00044623 genera un número de tarjeta aleatorio
                     String fech = generarFecha(); // 00044623 genera una fecha de expiración aleatoria
                     String tipo = cbTipoTarjeta.getValue(); // 00044623 obtiene el tipo de tarjeta seleccionado

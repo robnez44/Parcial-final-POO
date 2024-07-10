@@ -1,0 +1,6 @@
+Reporte D
+
+id_cliente	nombre_completo	facilitador	cantidad_compras	total_gastado
+1			Carlos Rivas			MasterCard			2			250.5
+2			Oracio Paredes			MasterCard			2			550.3
+4			Enrique Guzman			MasterCard			1			500.0

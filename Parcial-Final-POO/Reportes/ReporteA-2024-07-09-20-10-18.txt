@@ -1,0 +1,6 @@
+ID | FECHA | MONTO | DESCRIPCION | TERMINACION TARJETA
+
+1 | 2024-01-01 | 100.5 | Compra en supermercado | 3643
+2 | 2024-02-15 | 200.75 | Pago de servicios | 7409
+3 | 2024-03-20 | 150.0 | Cena en restaurante | 0085
+6 | 2024-06-22 | 400.1 | Compra de electrodomésticos | 3444

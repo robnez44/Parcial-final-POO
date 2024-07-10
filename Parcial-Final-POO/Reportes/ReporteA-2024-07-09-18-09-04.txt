@@ -1,0 +1,3 @@
+ID | FECHA | MONTO | DESCRIPCION | TERMINACION TARJETA
+
+1 | 2024-01-01 | 100.5 | Compra en supermercado | 3643
